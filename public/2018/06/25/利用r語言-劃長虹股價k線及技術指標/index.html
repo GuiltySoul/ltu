@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<title>利用R語言-劃長虹股價k線及技術指標 - LTU产学合作成果网</title>
+<meta property="og:title" content="利用R語言-劃長虹股價k線及技術指標 - LTU产学合作成果网">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/ltu.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="http://www.ltu.edu.tw/">LTU</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">利用R語言-劃長虹股價k線及技術指標</h1>
+
+    
+    <span class="article-date">2018/06/25</span>
+    
+
+    <div class="article-content">
+      <div id="1r" class="section level1">
+<h1>第1步：R工作目錄指令</h1>
+<pre class="r"><code>getwd()</code></pre>
+<pre><code>## [1] &quot;C:/Users/ThinkPad/Documents/ltu/content/post&quot;</code></pre>
+</div>
+<div id="2rquantmod" class="section level1">
+<h1>第2步：R使用quantmod套件指令</h1>
+<pre><code>## 载入需要的程辑包：xts</code></pre>
+<pre><code>## 载入需要的程辑包：zoo</code></pre>
+<pre><code>## 
+## 载入程辑包：&#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## 载入需要的程辑包：TTR</code></pre>
+<pre><code>## Version 0.4-0 included new data defaults. See ?getSymbols.</code></pre>
+</div>
+<div id="3ryahoo" class="section level1">
+<h1>第3步：R網路抓取Yahoo中長虹股價資料</h1>
+<pre class="r"><code>stock &lt;- getSymbols(&quot;5534.TW&quot;, auto.assign = FALSE)</code></pre>
+<pre><code>## &#39;getSymbols&#39; currently uses auto.assign=TRUE by default, but will
+## use auto.assign=FALSE in 0.5-0. You will still be able to use
+## &#39;loadSymbols&#39; to automatically load data. getOption(&quot;getSymbols.env&quot;)
+## and getOption(&quot;getSymbols.auto.assign&quot;) will still be checked for
+## alternate defaults.
+## 
+## This message is shown once per session and may be disabled by setting 
+## options(&quot;getSymbols.warning4.0&quot;=FALSE). See ?getSymbols for details.</code></pre>
+<pre><code>## 
+## WARNING: There have been significant changes to Yahoo Finance data.
+## Please see the Warning section of &#39;?getSymbols.yahoo&#39; for details.
+## 
+## This message is shown once per session and may be disabled by setting
+## options(&quot;getSymbols.yahoo.warning&quot;=FALSE).</code></pre>
+<pre><code>## Warning: 5534.TW contains missing values. Some functions will not work if
+## objects contain missing values in the middle of the series. Consider using
+## na.omit(), na.approx(), na.fill(), etc to remove or replace them.</code></pre>
+<pre class="r"><code>stock1&lt;-na.omit(stock)</code></pre>
+<pre class="r"><code>head(stock1)</code></pre>
+<pre><code>##            5534.TW.Open 5534.TW.High 5534.TW.Low 5534.TW.Close
+## 2007-01-02      62.5749      64.7253     61.6431       61.9298
+## 2007-01-03      61.9298      63.0767     61.6431       61.9298
+## 2007-01-04      62.3599      62.3599     60.4246       60.8547
+## 2007-01-05      60.9263      61.5714     60.6396       60.7830
+## 2007-01-08      60.6396      61.4998     59.8512       59.8512
+## 2007-01-09      59.8512      60.9263     59.6361       59.8512
+##            5534.TW.Volume 5534.TW.Adjusted
+## 2007-01-02        1280727         25.11738
+## 2007-01-03        1245849         25.11738
+## 2007-01-04        2590751         24.68134
+## 2007-01-05        1480230         24.65226
+## 2007-01-08        1951783         24.27434
+## 2007-01-09        1150980         24.27434</code></pre>
+<pre class="r"><code>tail(stock1)</code></pre>
+<pre><code>##            5534.TW.Open 5534.TW.High 5534.TW.Low 5534.TW.Close
+## 2018-06-15         96.0         96.0        95.0          95.0
+## 2018-06-19         94.7         95.8        94.7          95.0
+## 2018-06-20         94.8         95.6        94.5          95.0
+## 2018-06-21         95.0         96.8        95.0          96.5
+## 2018-06-22         96.7         96.7        94.9          95.1
+## 2018-06-25         95.6         96.0        93.2          93.7
+##            5534.TW.Volume 5534.TW.Adjusted
+## 2018-06-15         914837             95.0
+## 2018-06-19         939761             95.0
+## 2018-06-20         883228             95.0
+## 2018-06-21         958183             96.5
+## 2018-06-22        1191982             95.1
+## 2018-06-25        1461221             93.7</code></pre>
+<pre class="r"><code>#包含每天開盤價(5534.tw.Open)、最高價(5534.tw.High)、最低價(5534.tw.Low)、收盤價(5534.tw.Close)、成交量(5534.tw.Volume)、(還原權值)5534.tw.Adjusted。</code></pre>
+</div>
+<div id="4rk" class="section level1">
+<h1>第4步：R指令劃出長虹股價之K線圖</h1>
+<pre class="r"><code>chartSeries(stock1)</code></pre>
+<p><img src="/post/5534長虹_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>getDividends(&quot;5534.TW&quot;) </code></pre>
+<pre><code>##            5534.TW.div
+## 2004-07-22     0.70000
+## 2005-09-16     1.30435
+## 2006-09-08     1.74477
+## 2007-07-30     3.63636
+## 2008-08-22     4.70385
+## 2009-08-21     3.70000
+## 2010-08-06     3.84468
+## 2011-08-01     6.13861
+## 2012-07-31     5.44555
+## 2013-08-08     9.97389
+## 2014-09-12     6.50000
+## 2015-09-14     3.80952
+## 2016-08-26     2.83458
+## 2017-08-25     6.00000</code></pre>
+<pre class="r"><code>#获取股息数据
+#getDividends函数可以获取上市公司的股息数据。</code></pre>
+<pre class="r"><code>getSplits(&quot;5534.TW&quot;) </code></pre>
+<pre><code>##            5534.TW.spl
+## 2004-07-22   0.9259259
+## 2005-09-16   0.8695652
+## 2006-09-08   0.8474576
+## 2007-07-30   0.9090909
+## 2008-08-22   0.9803922
+## 2009-08-21   1.0000000
+## 2010-08-06   0.9803922
+## 2011-08-01   1.0000000
+## 2012-07-31   1.0000000
+## 2014-09-12   0.9523810
+## 2015-09-14   0.9523810</code></pre>
+<pre class="r"><code>#获取除权除息数据
+#使用getSplits()函数获取上市公司的除权除息数据：</code></pre>
+<pre class="r"><code>chartSeries(stock1[&quot;2014-01::2018-03&quot;],theme=&quot;white&quot;)</code></pre>
+<p><img src="/post/5534長虹_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>#我只要看此段區間的資料,同時把版面調成白色</code></pre>
+</div>
+<div id="5r" class="section level1">
+<h1>第5步：R指令劃出長虹股價之技術指標</h1>
+<div id="20" class="section level2">
+<h2>5.1 畫出20日平均線(月線)</h2>
+<pre class="r"><code>ma_20&lt;-runMean(stock1[,4],n=20)
+#stock1[,4]代表長虹股價每日的收盤價(5534.tw.Close)
+#因為收盤價放在第四行所以這樣表示。
+#runMean這個函數以即n=20表示計算過去20天的平均數。
+#因此。ma_20是一個時間序列，每一時間點表示過去20天的收盤平均。
+
+addTA(ma_20,on=1,col=&quot;blue&quot;)</code></pre>
+<p><img src="/post/5534長虹_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>#將20日均線(ma_20)的圖形，用藍色線條加到目前K線圖上 </code></pre>
+</div>
+<div id="60" class="section level2">
+<h2>5.2 畫出60日平均線(季線)</h2>
+<pre class="r"><code>ma_60&lt;-runMean(stock1[,4],n=60)
+#runMean這個函數以即n=60表示計算過去60天的平均數。
+#因此。ma_60是一個時間序列，每一時間點表示過去60天的收盤平均。
+
+addTA(ma_60,on=1,col=&quot;red&quot;)</code></pre>
+<p><img src="/post/5534長虹_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>#將60日均線(ma_60)的圖形，用紅色線條加到目前K線圖上 </code></pre>
+</div>
+</div>
+<div id="6" class="section level1">
+<h1>第6步：買賣長虹股價策略回測</h1>
+<pre class="r"><code>position&lt;-Lag(ifelse(ma_20&gt;ma_60, 1,0))
+
+#為了方便講解回測，我們用最普通的均線策略：當20ma大於60ma時，全壓買進
+#當20ma小於60ma時,空手
+#position為一個時間序列，以日為單位，如果20ma大於60ma，設值為1;
+#否則設值為0
+#由於我們是日資料,訊號發生時只能隔天做交易，故將這向量全部往後遞延一天
+tail(position)</code></pre>
+<pre><code>##            Lag.1
+## 2018-06-15     1
+## 2018-06-19     1
+## 2018-06-20     1
+## 2018-06-21     1
+## 2018-06-22     1
+## 2018-06-25     1</code></pre>
+</div>
+<div id="7roc" class="section level1">
+<h1>第7步：ROC買賣長虹股價策略回測</h1>
+<p>Rate Of Change(ROC):變動率指標變動率指標是一個動能指標，它測量一定時期內股票價格的變化比率。以當日的收盤價和N天前的收盤價比較，通過計算股價某一段時間內收盤價變動的比例，應用價格的移動比較來測量價位動量，達到事先探測股價買賣供需力量的強弱，進而分析股價的趨勢及其是否有轉勢的意願，屬於反趨向的指標之一。</p>
+<pre class="r"><code>#ROC計算：log(今天收盤價/昨天收盤價)，乘上poistion代表。
+#若1則持有，若0則空手。
+
+return&lt;-ROC(Cl(stock1))*position
+
+#由於我們策略條件是60ma&gt;20ma之後才會交易，故統計值從2014-08-01開始;
+
+
+return&lt;-return[&#39;2014-01-01/2018-03-14&#39;]
+#cumsum計算累計值，即將每一分量之前的值累加起來。
+#取exp函數是要計算累計損亦。
+#(這裡運用國中數學:log(a)+log(b)=log(ab)，exp(log(ab))=ab)
+
+return&lt;-exp(cumsum(return))</code></pre>
+<pre class="r"><code>#將累計損益圖畫出來。此策略的損益圖形如下，
+#橫軸為時間軸，縱軸為報酬率，1代表原始自有資金100%。
+
+plot(return,xlab=&quot;year &quot;,ylab=&quot;%&quot;, main=&quot;5534.tw&quot;) 
+abline(h = 0.95, v = 0.95,col = &quot;red&quot;)
+grid()</code></pre>
+<p><img src="/post/5534長虹_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

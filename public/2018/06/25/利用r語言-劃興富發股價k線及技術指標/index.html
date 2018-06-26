@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<title>利用R語言-劃興富發股價k線及技術指標 - LTU产学合作成果网</title>
+<meta property="og:title" content="利用R語言-劃興富發股價k線及技術指標 - LTU产学合作成果网">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/ltu.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="http://www.ltu.edu.tw/">LTU</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">利用R語言-劃興富發股價k線及技術指標</h1>
+
+    
+    <span class="article-date">2018/06/25</span>
+    
+
+    <div class="article-content">
+      <div id="1r" class="section level1">
+<h1>第1步：R工作目錄指令</h1>
+<pre class="r"><code>getwd()</code></pre>
+<pre><code>## [1] &quot;C:/Users/ThinkPad/Documents/ltu/content/post&quot;</code></pre>
+</div>
+<div id="2rquantmod" class="section level1">
+<h1>第2步：R使用quantmod套件指令</h1>
+<pre><code>## 载入需要的程辑包：xts</code></pre>
+<pre><code>## 载入需要的程辑包：zoo</code></pre>
+<pre><code>## 
+## 载入程辑包：&#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## 载入需要的程辑包：TTR</code></pre>
+<pre><code>## Version 0.4-0 included new data defaults. See ?getSymbols.</code></pre>
+</div>
+<div id="3ryahoo" class="section level1">
+<h1>第3步：R網路抓取Yahoo中興富發股價資料</h1>
+<pre class="r"><code>stock &lt;- getSymbols(&quot;2542.TW&quot;, auto.assign = FALSE)</code></pre>
+<pre><code>## &#39;getSymbols&#39; currently uses auto.assign=TRUE by default, but will
+## use auto.assign=FALSE in 0.5-0. You will still be able to use
+## &#39;loadSymbols&#39; to automatically load data. getOption(&quot;getSymbols.env&quot;)
+## and getOption(&quot;getSymbols.auto.assign&quot;) will still be checked for
+## alternate defaults.
+## 
+## This message is shown once per session and may be disabled by setting 
+## options(&quot;getSymbols.warning4.0&quot;=FALSE). See ?getSymbols for details.</code></pre>
+<pre><code>## 
+## WARNING: There have been significant changes to Yahoo Finance data.
+## Please see the Warning section of &#39;?getSymbols.yahoo&#39; for details.
+## 
+## This message is shown once per session and may be disabled by setting
+## options(&quot;getSymbols.yahoo.warning&quot;=FALSE).</code></pre>
+<pre><code>## Warning: 2542.TW contains missing values. Some functions will not work if
+## objects contain missing values in the middle of the series. Consider using
+## na.omit(), na.approx(), na.fill(), etc to remove or replace them.</code></pre>
+<pre class="r"><code>stock1&lt;-na.omit(stock)</code></pre>
+<pre class="r"><code>head(stock1)</code></pre>
+<pre><code>##            2542.TW.Open 2542.TW.High 2542.TW.Low 2542.TW.Close
+## 2007-01-02      17.8337      17.8337     17.4373       17.5208
+## 2007-01-03      17.5208      17.6877     17.1453       17.1453
+## 2007-01-04      17.1453      17.5208     16.7282       17.2288
+## 2007-01-05      17.3539      18.0840     17.2496       17.6459
+## 2007-01-08      17.7294      18.4802     17.7294       18.1882
+## 2007-01-09      18.4385      18.4385     17.9379       18.1882
+##            2542.TW.Volume 2542.TW.Adjusted
+## 2007-01-02        8085599         5.680021
+## 2007-01-03        8423597         5.558289
+## 2007-01-04       13884313         5.585358
+## 2007-01-05       19601524         5.720577
+## 2007-01-08       24537263         5.896383
+## 2007-01-09       10041676         5.896383</code></pre>
+<pre class="r"><code>tail(stock1)</code></pre>
+<pre><code>##            2542.TW.Open 2542.TW.High 2542.TW.Low 2542.TW.Close
+## 2018-06-15        46.35        47.00       45.85         45.90
+## 2018-06-19        45.80        46.35       45.70         46.20
+## 2018-06-20        46.20        46.30       45.90         46.25
+## 2018-06-21        46.20        46.20       46.00         46.15
+## 2018-06-22        46.05        46.15       45.50         45.70
+## 2018-06-25        45.75        46.25       45.70         45.80
+##            2542.TW.Volume 2542.TW.Adjusted
+## 2018-06-15        8512315            45.90
+## 2018-06-19        3419185            46.20
+## 2018-06-20        1664322            46.25
+## 2018-06-21        1318345            46.15
+## 2018-06-22        2563595            45.70
+## 2018-06-25        2130486            45.80</code></pre>
+<pre class="r"><code>#包含每天開盤價(2542.tw.Open)、最高價(2542.tw.High)、最低價(2542.tw.Low)、收盤價(2542.tw.Close)、成交量(2542.tw.Volume)、(還原權值)2542.tw.Adjusted。</code></pre>
+</div>
+<div id="4rk" class="section level1">
+<h1>第4步：R指令劃出興富發股價之K線圖</h1>
+<pre class="r"><code>chartSeries(stock1)</code></pre>
+<p><img src="/post/2542xff_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>getDividends(&quot;2542.TW&quot;) </code></pre>
+<pre><code>##            2542.TW.div
+## 2001-08-09    0.181406
+## 2005-10-05    0.087719
+## 2006-07-07    0.142192
+## 2007-08-09    0.228323
+## 2008-08-07    2.867080
+## 2009-07-29    2.296310
+## 2010-07-26    5.037710
+## 2011-07-26    6.096910
+## 2012-08-22    3.000000
+## 2013-07-18    3.000000
+## 2014-08-21    2.000000
+## 2015-09-21    2.366860
+## 2016-07-13    6.000000
+## 2017-09-11    4.873000</code></pre>
+<pre class="r"><code>#获取股息数据
+#getDividends函数可以获取上市公司的股息数据。</code></pre>
+<pre class="r"><code>getSplits(&quot;2542.TW&quot;) </code></pre>
+<pre><code>##            2542.TW.spl
+## 2000-10-27   0.8333333
+## 2001-08-09   0.9523810
+## 2005-10-05   0.8771930
+## 2006-07-07   0.8547009
+## 2007-08-09   0.7194245
+## 2008-08-07   0.9523810
+## 2009-07-29   1.0000000
+## 2012-10-30         Inf
+## 2014-08-21   0.6666667
+## 2015-09-21   0.7692308</code></pre>
+<pre class="r"><code>#获取除权除息数据
+#使用getSplits()函数获取上市公司的除权除息数据：</code></pre>
+<pre class="r"><code>chartSeries(stock1[&quot;2014-01::2018-03&quot;],theme=&quot;white&quot;)</code></pre>
+<p><img src="/post/2542xff_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>#我只要看此段區間的資料,同時把版面調成白色</code></pre>
+</div>
+<div id="5r" class="section level1">
+<h1>第5步：R指令劃出興富發股價之技術指標</h1>
+<div id="20" class="section level2">
+<h2>5.1 畫出20日平均線(月線)</h2>
+<pre class="r"><code>ma_20&lt;-runMean(stock1[,4],n=20)
+#stock1[,4]代表興富發股價每日的收盤價(2542.tw.Close)
+#因為收盤價放在第四行所以這樣表示。
+#runMean這個函數以即n=20表示計算過去20天的平均數。
+#因此。ma_20是一個時間序列，每一時間點表示過去20天的收盤平均。
+
+addTA(ma_20,on=1,col=&quot;blue&quot;)</code></pre>
+<p><img src="/post/2542xff_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>#將20日均線(ma_20)的圖形，用藍色線條加到目前K線圖上 </code></pre>
+</div>
+<div id="60" class="section level2">
+<h2>5.2 畫出60日平均線(季線)</h2>
+<pre class="r"><code>ma_60&lt;-runMean(stock1[,4],n=60)
+#runMean這個函數以即n=60表示計算過去60天的平均數。
+#因此。ma_60是一個時間序列，每一時間點表示過去60天的收盤平均。
+
+addTA(ma_60,on=1,col=&quot;red&quot;)</code></pre>
+<p><img src="/post/2542xff_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>#將60日均線(ma_60)的圖形，用紅色線條加到目前K線圖上 </code></pre>
+</div>
+</div>
+<div id="6" class="section level1">
+<h1>第6步：買賣興富發股價策略回測</h1>
+<pre class="r"><code>position&lt;-Lag(ifelse(ma_20&gt;ma_60, 1,0))
+
+#為了方便講解回測，我們用最普通的均線策略：當20ma大於60ma時，全壓買進
+#當20ma小於60ma時,空手
+#position為一個時間序列，以日為單位，如果20ma大於60ma，設值為1;
+#否則設值為0
+#由於我們是日資料,訊號發生時只能隔天做交易，故將這向量全部往後遞延一天
+tail(position)</code></pre>
+<pre><code>##            Lag.1
+## 2018-06-15     1
+## 2018-06-19     1
+## 2018-06-20     1
+## 2018-06-21     1
+## 2018-06-22     1
+## 2018-06-25     1</code></pre>
+</div>
+<div id="7roc" class="section level1">
+<h1>第7步：ROC買賣興富發股價策略回測</h1>
+<p>Rate Of Change(ROC):變動率指標變動率指標是一個動能指標，它測量一定時期內股票價格的變化比率。以當日的收盤價和N天前的收盤價比較，通過計算股價某一段時間內收盤價變動的比例，應用價格的移動比較來測量價位動量，達到事先探測股價買賣供需力量的強弱，進而分析股價的趨勢及其是否有轉勢的意願，屬於反趨向的指標之一。</p>
+<pre class="r"><code>#ROC計算：log(今天收盤價/昨天收盤價)，乘上poistion代表。
+#若1則持有，若0則空手。
+
+return&lt;-ROC(Cl(stock1))*position
+
+#由於我們策略條件是60ma&gt;20ma之後才會交易，故統計值從2014-08-01開始;
+
+
+return&lt;-return[&#39;2014-01-01/2018-03-14&#39;]
+#cumsum計算累計值，即將每一分量之前的值累加起來。
+#取exp函數是要計算累計損亦。
+#(這裡運用國中數學:log(a)+log(b)=log(ab)，exp(log(ab))=ab)
+
+return&lt;-exp(cumsum(return))</code></pre>
+<pre class="r"><code>#將累計損益圖畫出來。此策略的損益圖形如下，
+#橫軸為時間軸，縱軸為報酬率，1代表原始自有資金100%。
+
+plot(return,xlab=&quot;year &quot;,ylab=&quot;%&quot;, main=&quot;2542.tw&quot;) 
+abline(h = 0.95, v = 0.95,col = &quot;red&quot;)
+grid()</code></pre>
+<p><img src="/post/2542xff_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
