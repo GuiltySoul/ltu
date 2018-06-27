@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "LTU產學合作成果网"
+title = "利用R軟體建構台灣上市建設公司之股票購買機制"
 theme = "hugo-lithium"
 googleAnalytics = ""
 disqusShortname = ""
