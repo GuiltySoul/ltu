@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "LTU产学合作成果网"
+title = "LTU產學合作成果网"
 theme = "hugo-lithium"
 googleAnalytics = ""
 disqusShortname = ""
@@ -16,8 +16,8 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     name = "LTU"
     url = "http://www.ltu.edu.tw/"
 [[menu.main]]
-    name = "Twitter"
-    url = "https://twitter.com/rstudio"
+    name = "天證建設"
+    url = "http://tianjheng.com.tw/"
 
 [params]
     description = "A website built through Hugo and blogdown."

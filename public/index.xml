@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LTU产学合作成果网</title>
+    <title>LTU產學合作成果网</title>
     <link>/</link>
-    <description>Recent content on LTU产学合作成果网</description>
+    <description>Recent content on LTU產學合作成果网</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 27 Jun 2018 21:48:51 -0700</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>利用R語言-劃興富發股價k線及技術指標</title>
-      <link>/2018/06/25/%E5%88%A9%E7%94%A8r%E8%AA%9E%E8%A8%80-%E5%8A%83%E8%88%88%E5%AF%8C%E7%99%BC%E8%82%A1%E5%83%B9k%E7%B7%9A%E5%8F%8A%E6%8A%80%E8%A1%93%E6%8C%87%E6%A8%99/</link>
-      <pubDate>Mon, 25 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/2018/06/25/%E5%88%A9%E7%94%A8r%E8%AA%9E%E8%A8%80-%E5%8A%83%E8%88%88%E5%AF%8C%E7%99%BC%E8%82%A1%E5%83%B9k%E7%B7%9A%E5%8F%8A%E6%8A%80%E8%A1%93%E6%8C%87%E6%A8%99/</guid>
-      <description>author:林梦源 楊永列 劉嘉維 周雅琪 龔振庭第1步：R工作目錄指令getwd()## [1] &amp;quot;C:/Users/ThinkPad/Documents/ltu/content/post&amp;quot;第2步：R使用quantmod套件指令## 载入需要的程辑包：xts## 载入需要的程辑包：zoo## ## 载入程辑包：&amp;#39;zoo&amp;#39;## The following objects are masked from &amp;#39;package:base&amp;#39;:## ## as.Date, as.Date.numeric## 载入需要的程辑包：TTR## Version 0.4-0 included new data defaults. See ?getSymbols.第3步：R網路抓取Yahoo中興富發股價資料stock &amp;lt;- getSymbols(&amp;quot;2542.TW&amp;quot;, auto.assign = FALSE)## &amp;#39;getSymbols&amp;#39; currently uses auto.assign=TRUE by default, but will## use auto.assign=FALSE in 0.5-0. You will still be able to use## &amp;#39;loadSymbols&amp;#39; to automatically load data.</description>
-    </item>
-    
-    <item>
-      <title>利用R語言-劃長虹股價k線及技術指標</title>
-      <link>/2018/06/25/%E5%88%A9%E7%94%A8r%E8%AA%9E%E8%A8%80-%E5%8A%83%E9%95%B7%E8%99%B9%E8%82%A1%E5%83%B9k%E7%B7%9A%E5%8F%8A%E6%8A%80%E8%A1%93%E6%8C%87%E6%A8%99/</link>
-      <pubDate>Mon, 25 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/2018/06/25/%E5%88%A9%E7%94%A8r%E8%AA%9E%E8%A8%80-%E5%8A%83%E9%95%B7%E8%99%B9%E8%82%A1%E5%83%B9k%E7%B7%9A%E5%8F%8A%E6%8A%80%E8%A1%93%E6%8C%87%E6%A8%99/</guid>
-      <description>author:林梦源 楊永列 劉嘉維 周雅琪 龔振庭第1步：R工作目錄指令getwd()## [1] &amp;quot;C:/Users/ThinkPad/Documents/ltu/content/post&amp;quot;第2步：R使用quantmod套件指令## 载入需要的程辑包：xts## 载入需要的程辑包：zoo## ## 载入程辑包：&amp;#39;zoo&amp;#39;## The following objects are masked from &amp;#39;package:base&amp;#39;:## ## as.Date, as.Date.numeric## 载入需要的程辑包：TTR## Version 0.4-0 included new data defaults. See ?getSymbols.第3步：R網路抓取Yahoo中長虹股價資料stock &amp;lt;- getSymbols(&amp;quot;5534.TW&amp;quot;, auto.assign = FALSE)## &amp;#39;getSymbols&amp;#39; currently uses auto.assign=TRUE by default, but will## use auto.assign=FALSE in 0.5-0. You will still be able to use## &amp;#39;loadSymbols&amp;#39; to automatically load data.</description>
-    </item>
-    
-    <item>
       <title>About</title>
       <link>/about/</link>
-      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      <pubDate>Wed, 27 Jun 2018 21:48:51 -0700</pubDate>
       
       <guid>/about/</guid>
-      <description>This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
+      <description>隨著美國、歐元區、日本等先進國家景氣復甦腳步愈走愈穩，而中國經濟表現亦穩健走勢，部分東協國家PMI止跌回升，顯示全球整體經濟情勢持續回溫。根據台經院調查結果，在國外景氣回升帶動下，國內僅有服務業呈現回升，但製造業與營建業仍持續下跌，原因為供過於求的完工餘屋成為建築業的重擔，讓許多建商使用「以案養案」的財務槓桿操作，造成目前的局勢。 天證建設開發有限公司從一而終的經營理念為「信賴、卓越、延續」，每個推案的品質要求都是對住宅信念的落根踏實，透過深入了解台灣上市建設公司之經營績效，藉由R軟體建構股票購買機制，替投資方解決因資訊不對稱，而發生逆向選擇的問題。 利用R軟體建構台灣上市建設公司之股票購買機制，不僅可為投資方帶來更專業的服務，也助於瞭解目前台灣上市建築公司的動態變化，更有助於公司未來的投資參考，調整財務槓桿操作，強化公司資金佈局，並針對其他上市公司所發生的財務風險進行預防並設立專案小組。</description>
+    </item>
+    
+    <item>
+      <title>利用R軟體建構台灣上市建設公司之股票購買機制-劃興富發股價k線及技術指標</title>
+      <link>/2018/06/25/%E5%88%A9%E7%94%A8r%E8%BB%9F%E9%AB%94%E5%BB%BA%E6%A7%8B%E5%8F%B0%E7%81%A3%E4%B8%8A%E5%B8%82%E5%BB%BA%E8%A8%AD%E5%85%AC%E5%8F%B8%E4%B9%8B%E8%82%A1%E7%A5%A8%E8%B3%BC%E8%B2%B7%E6%A9%9F%E5%88%B6-%E5%8A%83%E8%88%88%E5%AF%8C%E7%99%BC%E8%82%A1%E5%83%B9k%E7%B7%9A%E5%8F%8A%E6%8A%80%E8%A1%93%E6%8C%87%E6%A8%99/</link>
+      <pubDate>Mon, 25 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/25/%E5%88%A9%E7%94%A8r%E8%BB%9F%E9%AB%94%E5%BB%BA%E6%A7%8B%E5%8F%B0%E7%81%A3%E4%B8%8A%E5%B8%82%E5%BB%BA%E8%A8%AD%E5%85%AC%E5%8F%B8%E4%B9%8B%E8%82%A1%E7%A5%A8%E8%B3%BC%E8%B2%B7%E6%A9%9F%E5%88%B6-%E5%8A%83%E8%88%88%E5%AF%8C%E7%99%BC%E8%82%A1%E5%83%B9k%E7%B7%9A%E5%8F%8A%E6%8A%80%E8%A1%93%E6%8C%87%E6%A8%99/</guid>
+      <description>author:林孟源 楊永列 劉佳維 周雅琪 龔振庭第1步：R工作目錄指令getwd()## [1] &amp;quot;C:/Users/ThinkPad/Documents/ltu/content/post&amp;quot;第2步：R使用quantmod套件指令## 载入需要的程辑包：xts## 载入需要的程辑包：zoo## ## 载入程辑包：&amp;#39;zoo&amp;#39;## The following objects are masked from &amp;#39;package:base&amp;#39;:## ## as.Date, as.Date.numeric## 载入需要的程辑包：TTR## Version 0.4-0 included new data defaults. See ?getSymbols.第3步：R網路抓取Yahoo中興富發股價資料stock &amp;lt;- getSymbols(&amp;quot;2542.TW&amp;quot;, auto.assign = FALSE)## &amp;#39;getSymbols&amp;#39; currently uses auto.assign=TRUE by default, but will## use auto.assign=FALSE in 0.5-0. You will still be able to use## &amp;#39;loadSymbols&amp;#39; to automatically load data.</description>
+    </item>
+    
+    <item>
+      <title>利用R軟體建構台灣上市建設公司之股票購買機制-劃長虹股價k線及技術指標</title>
+      <link>/2018/06/25/%E5%88%A9%E7%94%A8r%E8%BB%9F%E9%AB%94%E5%BB%BA%E6%A7%8B%E5%8F%B0%E7%81%A3%E4%B8%8A%E5%B8%82%E5%BB%BA%E8%A8%AD%E5%85%AC%E5%8F%B8%E4%B9%8B%E8%82%A1%E7%A5%A8%E8%B3%BC%E8%B2%B7%E6%A9%9F%E5%88%B6-%E5%8A%83%E9%95%B7%E8%99%B9%E8%82%A1%E5%83%B9k%E7%B7%9A%E5%8F%8A%E6%8A%80%E8%A1%93%E6%8C%87%E6%A8%99/</link>
+      <pubDate>Mon, 25 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/25/%E5%88%A9%E7%94%A8r%E8%BB%9F%E9%AB%94%E5%BB%BA%E6%A7%8B%E5%8F%B0%E7%81%A3%E4%B8%8A%E5%B8%82%E5%BB%BA%E8%A8%AD%E5%85%AC%E5%8F%B8%E4%B9%8B%E8%82%A1%E7%A5%A8%E8%B3%BC%E8%B2%B7%E6%A9%9F%E5%88%B6-%E5%8A%83%E9%95%B7%E8%99%B9%E8%82%A1%E5%83%B9k%E7%B7%9A%E5%8F%8A%E6%8A%80%E8%A1%93%E6%8C%87%E6%A8%99/</guid>
+      <description>author:林孟源 楊永列 劉佳維 周雅琪 龔振庭第1步：R工作目錄指令getwd()## [1] &amp;quot;C:/Users/ThinkPad/Documents/ltu/content/post&amp;quot;第2步：R使用quantmod套件指令## 载入需要的程辑包：xts## 载入需要的程辑包：zoo## ## 载入程辑包：&amp;#39;zoo&amp;#39;## The following objects are masked from &amp;#39;package:base&amp;#39;:## ## as.Date, as.Date.numeric## 载入需要的程辑包：TTR## Version 0.4-0 included new data defaults. See ?getSymbols.第3步：R網路抓取Yahoo中長虹股價資料stock &amp;lt;- getSymbols(&amp;quot;5534.TW&amp;quot;, auto.assign = FALSE)## &amp;#39;getSymbols&amp;#39; currently uses auto.assign=TRUE by default, but will## use auto.assign=FALSE in 0.5-0. You will still be able to use## &amp;#39;loadSymbols&amp;#39; to automatically load data.</description>
     </item>
     
   </channel>

@@ -1,6 +1,9 @@
 ---
 title: "About"
-date: "2016-05-05T21:48:51-07:00"
+date: "2018-06-27T21:48:51-07:00"
 ---
 
-This is a "hello world" example website for the [**blogdown**](https://github.com/rstudio/blogdown) package. The theme was forked from [@jrutheiser/hugo-lithium-theme](https://github.com/jrutheiser/hugo-lithium-theme) and modified by [Yihui Xie](https://github.com/yihui/hugo-lithium).
+隨著美國、歐元區、日本等先進國家景氣復甦腳步愈走愈穩，而中國經濟表現亦穩健走勢，部分東協國家PMI止跌回升，顯示全球整體經濟情勢持續回溫。根據台經院調查結果，在國外景氣回升帶動下，國內僅有服務業呈現回升，但製造業與營建業仍持續下跌，原因為供過於求的完工餘屋成為建築業的重擔，讓許多建商使用「以案養案」的財務槓桿操作，造成目前的局勢。
+天證建設開發有限公司從一而終的經營理念為「信賴、卓越、延續」，每個推案的品質要求都是對住宅信念的落根踏實，透過深入了解台灣上市建設公司之經營績效，藉由R軟體建構股票購買機制，替投資方解決因資訊不對稱，而發生逆向選擇的問題。
+利用R軟體建構台灣上市建設公司之股票購買機制，不僅可為投資方帶來更專業的服務，也助於瞭解目前台灣上市建築公司的動態變化，更有助於公司未來的投資參考，調整財務槓桿操作，強化公司資金佈局，並針對其他上市公司所發生的財務風險進行預防並設立專案小組。
+
